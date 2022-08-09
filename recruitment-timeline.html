@@ -1,0 +1,1661 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta property="og:description"
+        content=" The Mayor's Office for Economic Opportunity works to reduce poverty and broaden opportunity by advancing the use of data and evidence in program and policy design, service delivery, and budget decisions." />
+    <meta property="og:image" content="http://buildwithnyc.github.io/img/buildwithnyc.png" />
+    <link rel="icon" href="img/favicon.ico">
+</head>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;700&display=swap');
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'IBM Plex Sans', sans-serif;
+
+    }
+
+    a {
+        color: white;
+    }
+
+    /* Vertical pages responsive slideshow */
+    html {
+        scroll-snap-type: y mandatory;
+        scroll-behavior: smooth;
+    }
+
+    section {
+        block-size: 100vh;
+        scroll-snap-align: center;
+        scroll-snap-stop: always;
+    }
+
+    /* Vertical line */
+    .vertical-line-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+        grid-template-areas: "overlap";
+    }
+
+    .vertical-line {
+        width: 3px;
+        height: 100vh;
+        background-color: white;
+
+        /* On top of the line and to center */
+        grid-area: overlap;
+        align-self: center;
+        justify-self: center;
+    }
+
+    /* navigation bar */
+    .nav {
+        --nav-gap: 15px;
+        padding: var(--nav-gap);
+        padding-top: 2px;
+
+        /* make it on the left */
+        position: fixed;
+        left: 2.5%;
+        top: 5%;
+        transform: translate(-10%);
+    }
+
+    .nav-item {
+        align-items: center;
+        display: flex;
+        margin-bottom: var(--nav-gap);
+    }
+
+    .nav-link {
+        background-color: rgba(255, 255, 255, 0.5);
+        border-radius: 50%;
+        height: var(--nav-gap);
+        width: var(--nav-gap);
+        transition: transform 0.1s;
+        margin-right: var(--nav-gap);
+    }
+
+    .nav-link-selected {
+        background-color: #FAA302;
+        transform: scale(1.4);
+    }
+
+    .nav-link-selected~.nav-label {
+        opacity: 1;
+    }
+
+    .nav-link:hover~.nav-label {
+        opacity: 1;
+    }
+
+    .nav-label {
+        color: White;
+        font-weight: bold;
+        opacity: 0;
+        transition: opacity 0.1s;
+    }
+
+    /* mobile view */
+    @media screen and (max-width:766px) {
+        * {
+            /* border: 2px aqua solid */
+        }
+
+        /* Vertical container */
+        .vertical-line-container img {
+            width: 240px;
+
+            /* On top of the line and to center */
+            grid-area: overlap;
+            justify-self: center;
+        }
+
+        /* First page vertical line */
+        div.page1-vertical-line-container {
+            display: flex;
+            flex-direction: column-reverse;
+            justify-content: center;
+            align-items: center;
+        }
+
+        div.page1-vertical-line {
+            display: none;
+        }
+
+        div.page1-vertical-line-dot {
+            display: none;
+        }
+
+        div.page1-vertical-line-container img {
+            width: 240px;
+        }
+
+        div.page1-vertical-line-container p {
+            color: white;
+            font-size: 40px;
+
+            margin-top: 41px;
+            margin-bottom: 31px;
+        }
+
+        /* Last page vertical line */
+        div.last-page-vertical-line-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr;
+        }
+
+        div.last-page-vertical-line {
+            display: none;
+        }
+
+        div.last-page-vertical-line-dot {
+            display: none;
+        }
+
+        div.last-page-vertical-line-container img {
+            width: 240px;
+
+            justify-self: center;
+            z-index: 1;
+
+            margin-bottom: 2rem;
+        }
+
+        /* vertical-line */
+        .vertical-line-container {
+            margin-top: 28px;
+            margin-bottom: 28px;
+        }
+
+        .vertical-line {
+            display: none;
+        }
+
+        .vertical-line img {
+            width: 240px;
+            justify-self: center;
+        }
+
+        /* nav bar */
+        .nav {
+            display: none;
+        }
+
+        /* page 1  */
+        #intro {
+            display: flex;
+            flex-direction: column;
+        }
+
+        #intro :nth-child(1) {
+            order: 3;
+        }
+
+        #intro :nth-child(2) {
+            order: 1;
+        }
+
+        #intro :nth-child(3) {
+            order: 2;
+        }
+
+        div.page1-col1 {
+            flex: 1;
+
+            color: white;
+            text-align: center;
+            font-size: 1.25rem;
+
+            margin-top: 38px;
+        }
+
+        div.page1-col1 p {
+            margin-left: 55px;
+            margin-right: 55px;
+        }
+
+        div.page1-col3 {
+            color: white;
+            text-align: center;
+            font-size: 25px;
+
+            margin-top: 77px;
+        }
+
+
+        /* Page 2 */
+        #whoIsNYCO {
+            display: flex;
+            flex-direction: column;
+        }
+
+        div.page2-col1 {
+            font-size: 1.5em;
+            color: white;
+            text-align: center;
+
+            font-size: 30px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+        div.page2-col3 {
+            flex: 1;
+            color: white;
+            text-align: center;
+            padding-left: 45px;
+            padding-right: 45px;
+            grid-area: overlap;
+        }
+
+        div.page2-col3-big-text p {
+            font-size: 25px;
+        }
+
+        div.page2-col3-small-text p {
+            font-size: 1.25rem;
+        }
+
+        /* Page 3 */
+        #timeline {
+            display: flex;
+            flex-direction: column-reverse;
+        }
+
+        div.page3-col1-left-square-container {
+            align-items: center;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            margin-top: 2.5em
+        }
+
+        div.page3-col1-left-square-box {
+            background-color: #FAA302;
+            border-radius: 10px;
+            width: 150px;
+            height: 53px;
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            color: white
+        }
+
+        div.page3-col1-right-square-box {
+            background-color: #FC5D52;
+            border-radius: 10px;
+            width: 150px;
+            height: 53px;
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            color: white
+        }
+
+        div.page3-col1-left-container p {
+            padding-top: 1em;
+            color: white
+        }
+
+        div.page3-col1-right-square-container {
+            align-items: center;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            padding-top: 2.5em
+        }
+
+        div.page3-col1-right-container p {
+            padding-top: 1em;
+            color: white
+        }
+
+        div.page3-col1 {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            position: relative;
+            bottom: 5em;
+        }
+
+        #page3-col2 {
+            justify-self: center;
+            margin-top: 100px;
+            position: relative;
+            top: -18.5em;
+        }
+
+        div.page3-col3 {
+            color: white;
+            text-align: center;
+            position: relative;
+            top: 17em;
+        }
+
+        div.page3-col3-big-text {
+            font-size: 30px;
+            margin-bottom: 10em;
+        }
+
+        div.page3-col3 p {
+            font-size: 20px;
+            margin-left: 45px;
+            margin-right: 45px;
+        }
+
+        /* Page 4 */
+        div.page4-col1 {
+            font-size: 40px;
+            color: white;
+            text-align: center;
+            position: relative;
+            top: 0.3em;
+        }
+
+        p.page4-col1-big-text {
+            font-size: 30px;
+            margin-bottom: 10em;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+        p.page4-col1-content-text {
+            font-size: 20px;
+            margin-left: 0.6em;
+            margin-right: 0.6em;
+        }
+
+        #page4-col2 {
+            justify-self: center;
+            position: relative;
+            top: -28.9em;
+        }
+
+        div.page4-col3 {
+            position: relative;
+            bottom: 17em;
+            color: white;
+        }
+
+        div.page4-col3 p {
+            font-size: 1em;
+            text-align: center;
+        }
+
+        div.page4-col3 ul {
+            padding-left: 3em;
+            font-size: 20px;
+
+        }
+
+        /* Fifth page */
+        div.page5-col1-first-container {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            display: flex;
+            color: white;
+        }
+
+        div.page5-col1-first-container img {
+            width: 60px;
+        }
+
+        div.page5-col1-first-container ul {
+            padding-left: 2.2rem;
+        }
+
+        div.page5-col1-second-container {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            display: flex;
+            color: white;
+            padding-left: 10px;
+        }
+
+        div.page5-col1-second-container img {
+            width: 60px
+        }
+
+        div.page5-col1 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+            position: relative;
+            bottom: -37.5em;
+        }
+
+        #page5-col2 {
+            position: relative;
+            top: -9em;
+        }
+
+        div.page5-col3 {
+            color: white;
+            text-align: center;
+
+            position: relative;
+            bottom: 30em;
+        }
+
+        p.page5-col3-big-text {
+            font-size: 30px;
+            margin-bottom: 17.5rem;
+        }
+
+        p.page5-col3-p1,
+        p.page5-col3-p2 {
+            font-size: 0.85em;
+            padding-left: 1em;
+            padding-right: 1em;
+        }
+
+        /* Page 6 */
+        div.page6-col1 {
+            flex: 1;
+            font-size: 30px;
+            color: white;
+            text-align: center;
+            padding-top: 3rem;
+            padding-bottom: 1.5rem;
+        }
+
+        div.page6-col3 {
+            flex: 1;
+            color: white;
+        }
+
+        div.page6-col3 p {
+            text-align: center;
+            font-size: 1.5em;
+            padding-left: 1em;
+            padding-right: 1em;
+        }
+
+        div.page6-col3-checkbox-container {
+            display: flex;
+            flex-direction: column;
+
+            gap: 0.5em;
+            text-align: center;
+        }
+
+        label.page6-col3-first-label-container {
+            margin-top: 1em;
+            margin-bottom: 1em;
+        }
+
+        input.page6-col3-input {
+            transform: scale(1.5)
+        }
+
+        span.page6-col3-circle {
+            font-size: 1.5rem;
+            border-radius: 20px;
+            padding: 5px;
+        }
+    }
+
+    /* Tablet view */
+    @media screen and (min-width:768px) and (max-width:1023px) {
+
+        * {
+            /* border: 2px solid aqua; */
+        }
+
+        .vertical-line-container img {
+            width: 283px;
+
+            /* On top of the line and to center */
+            grid-area: overlap;
+            justify-self: center;
+            margin-top: 75px;
+        }
+
+        /* all pages */
+        .slide-container {
+            display: flex;
+        }
+
+        /* First page vertical line */
+        div.page1-vertical-line-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr;
+            grid-template-areas: "overlap";
+        }
+
+        div.page1-vertical-line {
+            width: 3px;
+            height: 82vh;
+            background-color: white;
+
+            /* To center and bottom */
+            grid-area: overlap;
+            justify-self: center;
+            position: absolute;
+            bottom: 0;
+        }
+
+        div.page1-vertical-line-container img {
+            width: 283px;
+
+            /* On top of the line and to center */
+            grid-area: overlap;
+            justify-self: center;
+            margin-top: 260px;
+            z-index: 1;
+        }
+
+        div.page1-vertical-line-container p {
+            grid-area: overlap;
+            justify-self: center;
+            margin-top: 55px;
+            z-index: 1;
+
+            color: white;
+            font-size: 35px
+        }
+
+        div.page1-vertical-line-dot {
+            width: 15px;
+            height: 15px;
+            background: white;
+            border-radius: 50%;
+            margin-left: -5.5px;
+            position: absolute;
+            top: -4px
+        }
+
+        /* Last page vertical line */
+        div.last-page-vertical-line-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr;
+            grid-template-areas: "overlap";
+        }
+
+        div.last-page-vertical-line {
+            width: 3px;
+            height: 82vh;
+            background-color: white;
+
+            /* To center and bottom */
+            grid-area: overlap;
+            justify-self: center;
+            position: absolute;
+        }
+
+        div.last-page-vertical-line-dot {
+            width: 15px;
+            height: 15px;
+            background: white;
+            border-radius: 50%;
+            margin-left: -5.5px;
+            position: absolute;
+            bottom: 0px
+        }
+
+        div.last-page-vertical-line-container img {
+            width: 283px;
+
+            /* On top of the line and to center */
+            grid-area: overlap;
+            justify-self: center;
+            margin-top: 180px;
+            z-index: 1;
+        }
+
+        /* page 1  */
+        div.page1-col1 {
+            flex: 1;
+
+            padding-top: 550px;
+
+            color: white;
+            text-align: center;
+            font-size: 20px;
+        }
+
+        div.page1-col1 p {
+            padding-left: 2em;
+        }
+
+        div.page1-col3 {
+            flex: 1;
+
+            padding-top: 550px;
+
+            color: white;
+            text-align: center;
+            font-size: 35px;
+        }
+
+        div.page1-col3 p {
+            padding-right: 1em;
+        }
+
+        /* Page 2 */
+        div.page2-col1 {
+            flex: 1;
+            font-size: 30px;
+            color: white;
+            text-align: center;
+            padding-top: 400px
+        }
+
+        div.page2-col1 p {
+            margin-left: 1.75em;
+        }
+
+        div.page2-col3 {
+            flex: 1;
+            color: white;
+            text-align: center;
+            padding-top: 275px;
+        }
+
+        p.page2-col3-big-text {
+            font-size: 30px;
+            padding-right: 2em;
+            padding-left: 1em;
+        }
+
+        div.page2-col3 p {
+            font-size: 20px;
+            padding-right: 3em;
+            padding-left: 1em;
+        }
+
+        /* Page 3 */
+        div.page3-col1 {
+            flex: 1;
+            display: grid;
+            grid-template-rows: 1fr 1fr;
+        }
+
+        div.page3-col1-left-square-container {
+            align-items: center;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            margin-top: 25em;
+            padding-left: 2.5rem;
+        }
+
+        div.page3-col1-left-square-box {
+            background-color: #FAA302;
+            border-radius: 10px;
+            width: 100px;
+            height: 53px;
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            color: white
+        }
+
+        div.page3-col1-left-container p {
+            padding-top: 1em;
+            padding-left: 2em;
+            padding-right: 2em;
+            color: white
+        }
+
+        div.page3-col1-right-square-container {
+            align-items: center;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            padding-top: 2.5em;
+            padding-left: 2.5rem;
+        }
+
+        div.page3-col1-right-square-box {
+            background-color: #FC5D52;
+            border-radius: 10px;
+            width: 100px;
+            height: 53px;
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            color: white
+        }
+
+        div.page3-col1-right-container p {
+            padding-top: 1em;
+            padding-left: 2em;
+            padding-right: 2em;
+            color: white
+        }
+
+        div.page3-col3 {
+            flex: 1;
+            color: white;
+            text-align: center;
+            padding-top: 370px
+        }
+
+        div.page3-col3-big-text {
+            font-size: 40px;
+            padding-right: 1em
+        }
+
+        div.page3-col3 p {
+            font-size: 20px;
+            padding-right: 3em
+        }
+
+        /* Page 4 */
+        div.page4-col1 {
+            flex: 1;
+            font-size: 40px;
+            color: white;
+            text-align: center;
+            padding-top: 20rem;
+        }
+
+        div.page4-col1-big-text {
+            padding-left: 0.5em;
+            padding-right: 0.4em
+        }
+
+        div.page4-col1 p {
+            margin-top: 1em;
+
+            font-size: 20px;
+            padding-left: 3em;
+        }
+
+        div.page4-col3 {
+            flex: 1;
+            color: white;
+            padding-top: 20rem;
+        }
+
+        div.page4-col3 p {
+            font-size: 20px;
+            padding-right: 3em;
+            text-align: center;
+        }
+
+        div.page4-col3 ul {
+            padding-left: 1em;
+            padding-right: 2em;
+            font-size: 20px
+        }
+
+        /* Fifth page */
+        div.page5-col1 {
+            flex: 1;
+            display: grid;
+            grid-template-rows: 1fr 1fr;
+        }
+
+        div.page5-col1-first-container {
+            align-items: center;
+            flex-direction: column;
+            display: flex;
+            color: white;
+            padding-left: 3rem;
+            margin-top: 17rem;
+        }
+
+        div.page5-col1-first-container img {
+            width: 95px;
+        }
+
+        div.page5-col1-second-container {
+            align-items: center;
+            flex-direction: column;
+            display: flex;
+            color: white;
+            padding-left: 3rem;
+            margin-top: 4rem;
+        }
+
+        div.page5-col1-second-container img {
+            width: 95px
+        }
+
+        div.page5-col3 {
+            flex: 1;
+            color: white;
+            text-align: center
+        }
+
+        p.page5-col3-big-text {
+            padding-top: 100px;
+            font-size: 25px;
+            margin-right: 1em;
+            margin-left: 1em
+        }
+
+        div.page5-col3 p {
+            font-size: 16px;
+            margin-right: 3em;
+            margin-left: 2em
+        }
+
+        /* Page 6 */
+        div.page6-col1 {
+            flex: 1;
+            font-size: 32.5px;
+            color: white;
+            text-align: center;
+            padding-top: 27.5rem;
+        }
+
+        div.page6-col1 p {
+            margin-left: 2rem;
+            margin-right: 1rem;
+        }
+
+        div.page6-col3 {
+            flex: 1;
+            color: white;
+            padding-top: 27.5rem;
+        }
+
+        div.page6-col3-checkbox-container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label.page6-col3-first-label-container {
+            margin-bottom: 2em;
+        }
+
+        input.page6-col3-input {
+            transform: scale(1.5)
+        }
+
+        span.page6-col3-circle {
+            font-size: 13px;
+            border-radius: 20px;
+            padding: 5px;
+        }
+    }
+
+    /* pc view */
+    @media screen and (min-width:1024px) {
+
+        /* all pages */
+        .slide-container {
+            display: flex;
+        }
+
+        .vertical-line-container img {
+            width: 283px;
+
+            /* On top of the line and to center */
+            grid-area: overlap;
+            justify-self: center;
+            margin-top: 75px;
+        }
+
+        /* First page vertical line */
+        div.page1-vertical-line-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr;
+            grid-template-areas: "overlap";
+        }
+
+        div.page1-vertical-line {
+            width: 3px;
+            height: 82vh;
+            background-color: white;
+
+            /* To center and bottom */
+            grid-area: overlap;
+            justify-self: center;
+            position: absolute;
+            bottom: 0;
+        }
+
+        div.page1-vertical-line-container img {
+            width: 283px;
+
+            /* On top of the line and to center */
+            grid-area: overlap;
+            justify-self: center;
+            margin-top: 180px;
+            z-index: 1;
+        }
+
+        div.page1-vertical-line-container p {
+            grid-area: overlap;
+            justify-self: center;
+            margin-top: 35px;
+            z-index: 1;
+
+            color: white;
+            font-size: 35px
+        }
+
+        div.page1-vertical-line-dot {
+            width: 15px;
+            height: 15px;
+            background: white;
+            border-radius: 50%;
+            margin-left: -5.5px;
+            position: absolute;
+            top: -4px
+        }
+
+        /* Last page vertical line */
+        div.last-page-vertical-line-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr;
+            grid-template-areas: "overlap";
+        }
+
+        div.last-page-vertical-line {
+            width: 3px;
+            height: 82vh;
+            background-color: white;
+
+            /* To center and bottom */
+            grid-area: overlap;
+            justify-self: center;
+            position: absolute;
+        }
+
+        div.last-page-vertical-line-dot {
+            width: 15px;
+            height: 15px;
+            background: white;
+            border-radius: 50%;
+            margin-left: -5.5px;
+            position: absolute;
+            bottom: 0px
+        }
+
+        div.last-page-vertical-line-container img {
+            width: 283px;
+
+            /* On top of the line and to center */
+            grid-area: overlap;
+            justify-self: center;
+            margin-top: 180px;
+            z-index: 1;
+        }
+
+        /* page 1  */
+        div.page1-col1 {
+            flex: 1;
+            color: white;
+            text-align: center;
+            padding-top: 400px
+        }
+
+        div.page1-col1 p {
+            font-size: 20px;
+            padding-left: 2em;
+            padding-right: 2em
+        }
+
+        div.page1-col3 {
+            flex: 1;
+            font-size: 40px;
+            color: white;
+            text-align: center;
+            padding-top: 370px;
+        }
+
+        div.page1-col3 p {
+            padding-left: 1em;
+        }
+
+        /* Page 2 */
+        div.page2-col1 {
+            flex: 1;
+            font-size: 40px;
+            color: white;
+            text-align: center;
+            padding-top: 325px
+        }
+
+        div.page2-col1 p {
+            padding-left: 2em;
+        }
+
+        div.page2-col3 {
+            flex: 1;
+            color: white;
+            text-align: center;
+            padding-top: 21rem;
+        }
+
+        p.page2-col3-big-text {
+            font-size: 30px;
+            padding-right: 2em;
+            padding-left: 1em;
+        }
+
+        div.page2-col3 p {
+            font-size: 20px;
+            padding-right: 3em;
+            padding-left: 1em;
+        }
+
+        /* Page 3 */
+        div.page3-col1 {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+        }
+
+        div.page3-col1-left-container {
+            grid-row-start: 2
+        }
+
+        div.page3-col1-left-square-container {
+            align-items: center;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            margin-top: 2.5em
+        }
+
+        div.page3-col1-left-square-box {
+            background-color: #FAA302;
+            border-radius: 10px;
+            width: 150px;
+            height: 53px;
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            color: white
+        }
+
+        div.page3-col1-left-container p {
+            padding-top: 1em;
+            color: white
+        }
+
+        div.page3-col1-right-container {
+            grid-row-start: 2
+        }
+
+        div.page3-col1-right-square-container {
+            align-items: center;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            padding-top: 2.5em
+        }
+
+        div.page3-col1-right-container p {
+            padding-top: 1em;
+            color: white
+        }
+
+        div.page3-col1-right-square-box {
+            background-color: #FC5D52;
+            border-radius: 10px;
+            width: 150px;
+            height: 53px;
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            color: white
+        }
+
+        div.page3-col3 {
+            flex: 1;
+            color: white;
+            text-align: center;
+            padding-top: 350px
+        }
+
+        div.page3-col3-big-text {
+            font-size: 40px;
+            padding-right: 1em
+        }
+
+        div.page3-col3 p {
+            font-size: 20px;
+            padding-right: 3em
+        }
+
+        /* Page 4 */
+        div.page4-col1 {
+            flex: 1;
+            font-size: 40px;
+            color: white;
+            text-align: center;
+            padding-top: 300px
+        }
+
+        div.page4-col1-big-text {
+            padding-left: 2em;
+            padding-right: 0.4em;
+        }
+
+        div.page4-col1 p {
+            font-size: 19px;
+            padding-left: 3em;
+            margin-top: 1em
+        }
+
+        div.page4-col3 {
+            flex: 1;
+            color: white;
+            padding-top: 325px
+        }
+
+        div.page4-col3 p {
+            font-size: 20px;
+            padding-right: 4em;
+            text-align: center;
+        }
+
+        div.page4-col3 ul {
+            padding-left: 4em;
+            padding-right: 2em;
+            font-size: 20px
+        }
+
+        /* Page 5 */
+        div.page5-col1 {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+        }
+
+        div.page5-col1-first-container {
+            grid-row-start: 2;
+            display: flex;
+            flex-direction: column;
+            display: flex;
+            color: white;
+            padding-left: 30%;
+        }
+
+        div.page5-col1-first-container img {
+            width: 125px
+        }
+
+        div.page5-col1-second-container {
+            grid-row-start: 2;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            display: flex;
+            color: white
+        }
+
+        div.page5-col1-second-container img {
+            width: 125px
+        }
+
+        p.page5-col3-big-text {
+            font-size: 40px
+        }
+
+        /* Page 6 */
+        div.page6-col1 {
+            flex: 1;
+            font-size: 35px;
+            color: white;
+            text-align: center;
+            padding-top: 325px
+        }
+
+        div.page6-col3 {
+            flex: 1;
+            color: white;
+            text-align: center;
+            padding-top: 320px
+        }
+
+        div.page6-col3-checkbox-container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label.page6-col3-first-label-container {
+            margin-bottom: 2em;
+        }
+
+        input.page6-col3-input {
+            transform: scale(1.5);
+            margin-right: 5px;
+        }
+
+        span.page6-col3-circle {
+            border-radius: 20px;
+            padding: 10px
+        }
+    }
+
+    /* special cases */
+    @media screen and (min-width:1024px) and (max-width:1400px) {
+        div.page5-col3 {
+            padding-top: 300px;
+            flex: 1;
+            color: white;
+            text-align: center;
+        }
+
+        div.page5-col3 p {
+            padding-right: 2em
+        }
+    }
+
+    @media screen and (min-width:1399px) {
+        div.page5-col3 {
+            padding-top: 24rem;
+            flex: 1;
+            color: white;
+            text-align: center
+        }
+
+        div.page5-col3 p {
+            padding-right: 2em
+        }
+
+        p.page5-col3-big-text {
+            padding-left: 10px;
+            align-self: center;
+        }
+    }
+</style>
+
+<body>
+
+    <!-- First page -->
+    <section class="slide-container" id="intro" data-label="Overview" style="background-color: #24325B">
+
+        <!-- First column -->
+        <div class="page1-col1">
+            <p>
+                This page walks you through the general expectations and timeline of applying to work with the NYC
+                Mayor’s Office of Economic Opportunity by answering the Who, What, Why, How and When.
+            </p>
+        </div>
+
+        <!-- Second Column -->
+        <div class="page1-vertical-line-container">
+            <p><b>Applicant Guide</b></p>
+            <div class="page1-vertical-line">
+                <div class="page1-vertical-line-dot">
+                </div>
+            </div>
+            <img src="img/slide1-computer-icon.png">
+        </div>
+
+        <!-- Third column -->
+        <div class="page1-col3">
+            <p>
+                <b>
+                    First Time Applying To a Government Position?
+                </b>
+            </p>
+        </div>
+
+    </section>
+
+
+    <!-- Second page -->
+    <section class="slide-container" id="whoIsNYCO" data-label="Who Is NYCO" style="background-color: #8195DC;">
+
+        <!-- First column -->
+        <div class="page2-col1">
+            <p>
+                <b>
+                    Who is the NYC Mayor’s Office of Economic Opportunity?
+                </b>
+            </p>
+        </div>
+
+        <!-- Second column: the timeline -->
+        <div class="vertical-line-container">
+            <div class="vertical-line"></div>
+            <img src="img/Nyco-logo.png">
+        </div>
+
+        <!-- Third column -->
+        <div class="page2-col3">
+            <div class="page2-col3-big-text">
+                <p>
+                    <b>
+                        We help the city apply evidence and innovation to reduce poverty and increase equity.
+                    </b>
+                </p>
+            </div>
+
+            <br>
+
+            <div class="page2-col3-small-text">
+                <p>
+                    We are optimistic that this work can be moved forward in government and have large scale impact. Our
+                    iterative nature allows us to re-imagine and re-design how government works. Our mission and values
+                    continue to evolve as we learn together.
+                </p>
+            </div>
+        </div>
+
+    </section>
+
+
+
+    <!-- Third Page -->
+    <section class="slide-container" id="timeline" data-label="Timeline" style="background-color: #4157AA;">
+
+        <!-- First column -->
+        <div class="page3-col1">
+
+            <div class="page3-col1-left-container">
+                <div class="page3-col1-left-square-container">
+
+                    <div class="page3-col1-left-square-box">
+                        <b>2 Weeks - 1 Month</b>
+                    </div>
+
+                    <p>
+                        <b>
+                            From Application Submission to Internal review
+                        </b>
+                    </p>
+
+                </div>
+            </div>
+
+            <div class="page3-col1-right-container">
+                <div class="page3-col1-right-square-container">
+
+                    <div class="page3-col1-right-square-box">
+                        <b>6 Weeks - 2 Month</b>
+                    </div>
+
+                    <p>
+                        <b>
+                            From Interviewing to Candidate
+                        </b>
+                    </p>
+
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Second column: the timeline -->
+        <div class="vertical-line-container" id="page3-col2">
+            <div class="vertical-line"></div>
+            <img src="img/slide3-timeline-icon.png">
+        </div>
+
+        <!-- Third column -->
+        <div class="page3-col3">
+            <div class="page3-col3-big-text">
+                <b>
+                    What Is The Timeline?
+                </b>
+            </div>
+
+            <br>
+
+            <p>
+                Exact application timelines are different for each team within the office. However, here is a table
+                showing approximately how long it may take for our office to review, assess, and process your
+                application journey.
+            </p>
+        </div>
+    </section>
+
+
+
+    <!-- Fourth Page -->
+    <section class="slide-container" id="offerToStart" data-label="From Offer To Start"
+        style="background-color: #8195DC;">
+
+        <!-- First column -->
+        <div class="page4-col1">
+            <p class="page4-col1-big-text">
+                <b>
+                    What Happens From Offer to Start Date?
+                </b>
+            </p>
+
+            <p class="page4-col1-content-text">
+                It may take approximately 2-4 months of internal processing from offer to start date. Due to the nature
+                of government hiring, this onboarding time frame varies case by case. Becoming any kind of government
+                employee requires multiple chains of review and approval.
+            </p>
+        </div>
+
+        <!-- Second column: the timeline -->
+        <div class="vertical-line-container" id="page4-col2">
+            <div class="vertical-line"></div>
+            <img src="img/slide4-clock-icon.png">
+        </div>
+
+        <!-- Third column -->
+        <div class="page4-col3">
+            <p>
+                <b>
+                    As you navigate this process, we will check in to offer updates. But some common things that happen
+                    internally from offer to start date include:
+                </b>
+            </p>
+
+            <br>
+
+            <ul>
+                <li>Background checks</li>
+                <li>Budget approvals </li>
+                <li>Position in the queue</li>
+                <li>Review of experience against the City’s Civil Service Titles </li>
+            </ul>
+        </div>
+
+    </section>
+
+
+
+    <!-- Fifth Page -->
+    <section class="slide-container" id="needToApply" data-label="What To Apply With"
+        style="background-color: #24325B;">
+
+        <!-- First column -->
+        <div class="page5-col1">
+
+            <div class="page5-col1-first-container">
+                <img src="img/slide5-cv-icon.png">
+                <br>
+                <p>Must have to apply</p>
+                <br>
+                <ul>
+                    <li>Resume</li>
+                    <li>Cover Letter</li>
+                    <li>Recruitment Form</li>
+                    <li>City Job Site</li>
+                </ul>
+                </p>
+            </div>
+
+            <div class="page5-col1-second-container">
+                <img src="img/slide5-github-icon.png">
+                <br>
+                <p>Supporting Material</p>
+                <br>
+                <ul>
+                    <li>Portfolio</li>
+                    <li>Github</li>
+                    <li>Writing Samples</li>
+                    <li>Publications</li>
+                </ul>
+                </p>
+            </div>
+
+        </div>
+
+        <!-- Second column: the timeline -->
+        <div class="vertical-line-container" id="page5-col2">
+            <div class="vertical-line"></div>
+            <img src="img/slide5-doc-icon.png">
+        </div>
+
+        <!-- Third column -->
+        <div class="page5-col3">
+            <p class="page5-col3-big-text">
+                <b>
+                    What Do I Need To Apply?
+                </b>
+            </p>
+
+            <br>
+
+            <p class="page5-col3-p1">
+                Begin your process by exploring the open position descriptions, and getting to know the team you might
+                best fit with. We pursue our work through five interrelated disciplines: *Research, Service Design,
+                Digital Products, Data Integration, and Programs & Evaluation.* Each team will have a different set of
+                required materials to apply.
+            </p>
+
+            <br>
+
+            <p class="page5-col3-p2">
+                In our hiring process, we strive to be less prescriptive and more open to what you want to share. The
+                best way for us to know you better, and see the tangible aspects of your experience is if you can share
+                more about your personal role and work.
+            </p>
+        </div>
+
+    </section>
+
+    <!-- Sixth Page -->
+    <section class="slide-container" id="startApp" data-label="Start Application" style="background-color: #4157AA;">
+
+        <!-- First column -->
+        <div class="page6-col1">
+            <p>
+                <b>
+                    How Do I Start My Application?
+                </b>
+            </p>
+        </div>
+
+        <!-- Second Column -->
+        <div class="last-page-vertical-line-container">
+            <div class="last-page-vertical-line">
+                <div class="last-page-vertical-line-dot">
+                </div>
+            </div>
+            <img src="img/slide6-checklist-icon.png">
+        </div>
+
+        <!-- Third column -->
+        <div class="page6-col3">
+            <p>
+                <b>
+                    You must complete an application on both sites:
+                </b>
+            </p>
+
+            <br>
+
+            <div class="page6-col3-checkbox-container">
+                <label class="page6-col3-first-label-container">
+                    <input class="page6-col3-input" type="checkbox">
+                    <span class="checkmark"></span>
+                    <span class="page6-col3-circle" style="background-color:#FAA302">
+                        <a href="https://airtable.com/shr69xBNgAtu7b9w8" target="_blank">
+                            <b>
+                                NYCO Recruitment Airtable
+                            </b>
+                        </a>
+                    </span>
+                </label>
+
+                <label class="container">
+                    <input class="page6-col3-input" type="checkbox">
+                    <span class="checkmark"></span>
+                    <span class="page6-col3-circle" style="background-color: #FC5D52">
+                        <a href="https://a127-jobs.nyc.gov/psc/nycjobs/EMPLOYEE/HRMS/c/HRS_HRAM_FL.HRS_CG_SEARCH_FL.GBL?FOCUS=Applicant"
+                            target="_blank">
+                            <b>
+                                New York City Job Site
+                            </b>
+                        </a>
+                    </span>
+                </label>
+            </div>
+
+        </div>
+
+    </section>
+
+    <script>
+
+        function activateNavigation() {
+            // select all sections
+            const sections = document.querySelectorAll("section");
+
+            // create the nav element
+            const navContainer = document.createElement("nav");
+
+            //form an array of the divs, and then create the div below 
+            const navItems = Array.from(sections).map(section => {
+                return `
+                <div class="nav-item" data-for-section="${section.id}"">
+                    <a href='#${section.id}' class="nav-link"></a>
+                    <span class="nav-label">${section.dataset.label}</span>
+                </div>
+                `;
+            })
+
+            // create the nav div
+            navContainer.classList.add("nav")
+
+            // join together all the div array from ^^^
+            navContainer.innerHTML = navItems.join("")
+
+            // everytime the slide goes past the threshold (50%, or 0.5), it removes nav-link and change into nav-link-selected
+            const observer = new IntersectionObserver(entries => {
+                document.querySelectorAll(".nav-link").forEach(navLink => {
+                    navLink.classList.remove("nav-link-selected");
+                });
+
+                const visibleSection = entries.filter(entry => entry.isIntersecting)[0];
+
+                document.querySelector(`.nav-item[data-for-section="${visibleSection.target.id}"] .nav-link`).classList.add("nav-link-selected");
+
+            }, { threshold: 0.5 });
+
+            sections.forEach(section => observer.observe(section));
+
+            document.body.appendChild(navContainer)
+        }
+
+        activateNavigation();
+
+    </script>
+
+</body>
+
+</html>
